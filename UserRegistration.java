@@ -16,11 +16,12 @@ public class UserRegistration
 			System.out.println("Invalid\nEnter your name again");
 			checkName();
 		}
-		input.close();
 	}
 	public static void main(String[] args) 
 	{
 		System.out.println("Enter your First Name :");
+		checkName();
+		System.out.println("Enter your Last Name :");
 		checkName();
 	}
 }
