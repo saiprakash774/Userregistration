@@ -1,9 +1,26 @@
 package day5;
 
-public class UserRegistration {
+import java.util.Scanner;
 
-	public static void main(String[] args) {
-	System.out.println("Welcome to User Registration");
+public class UserRegistration 
+{
+	public static void checkName()
+	{
+		String pattern= "^[A-Z][a-z]{2,}$";
+		Scanner input=new Scanner(System.in);
+		String name=input.next();
+		if(name.matches(pattern))
+			System.out.println("valid");
+		else
+		{
+			System.out.println("Invalid\nEnter your name again");
+			checkName();
+		}
+		input.close();
 	}
-
+	public static void main(String[] args) 
+	{
+		System.out.println("Enter your First Name :");
+		checkName();
+	}
 }
