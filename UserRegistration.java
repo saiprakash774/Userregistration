@@ -43,6 +43,18 @@ public class UserRegistration
 			mobileNumValidation();
 		}
 	}
+	public static void passwordValidation() {
+		String pattern="[a-zA-Z\\d]{8,20}";
+		System.out.println("Enter the Password:");
+		String password=input.next();
+		if(password.matches(pattern))
+			System.out.println("valid password");
+		else
+		{
+		System.out.println("Invalid Password:");
+		passwordValidation();
+		}
+	}
 	public static void main(String[] args) 
 	{
 		System.out.println("Enter your First Name :");
@@ -51,5 +63,6 @@ public class UserRegistration
 		checkName();
 		emailValidation();
 		mobileNumValidation();
+		passwordValidation();
 	}
 }
