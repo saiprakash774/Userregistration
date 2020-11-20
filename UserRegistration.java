@@ -21,7 +21,7 @@ public class UserRegistration
 	public static void emailValidation() 
 	{
 		String pattern="^([a-zA-Z\\.]+)([a-zA-Z]+)@([a-z]+)\\.([a-zA-Z\\.]{2,5})$";
-		System.out.println("Enter you Email  Id");
+		System.out.println("Enter your Email  Id");
 		String email=input.next();
 		if(email.matches(pattern))
 			System.out.println("Valid Email Id");
@@ -31,6 +31,18 @@ public class UserRegistration
 			emailValidation();
 		}
 	}
+	public static void mobileNumValidation() {
+		String pattern="^([\\*]?91)[6-9]{1}[\\d]{9}$";
+		System.out.println("Enter your mobile number");
+		String mobile=input.next();
+		if(mobile.matches(pattern))
+			System.out.println("Valid Mobile number");
+		else
+		{
+			System.out.println("Invalid Mobile number");
+			mobileNumValidation();
+		}
+	}
 	public static void main(String[] args) 
 	{
 		System.out.println("Enter your First Name :");
@@ -38,5 +50,6 @@ public class UserRegistration
 		System.out.println("Enter your Last Name :");
 		checkName();
 		emailValidation();
+		mobileNumValidation();
 	}
 }
