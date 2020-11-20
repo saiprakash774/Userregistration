@@ -44,7 +44,7 @@ public class UserRegistration
 		}
 	}
 	public static void passwordValidation() {
-		String pattern="^(?=.*[A-Z]+)(?=.*[\\d])([a-zA-Z\\d]{7,20})$";
+		String pattern="^.(?=.*[A-Z]+)(?=.*[\\d])(?=.*[@#$%^&+=])([A-Za-z\\d]{7,20}).$";
 		System.out.println("Enter the Password:");
 		String password=input.next();
 		if(password.matches(pattern))
