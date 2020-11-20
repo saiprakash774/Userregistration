@@ -20,7 +20,7 @@ public class UserRegistration
 	}
 	public static void emailValidation() 
 	{
-		String pattern="^([a-zA-Z\\.]+)([a-zA-Z]+)@([a-z]+)\\.([a-zA-Z\\.]{2,5})$";
+		String pattern="^[a-zA-Z]+([\\d\\.\\+\\-][0-9a-zA-z]+)*@[\\da-zA-Z]+.[a-zA-Z]{2,4}(.[a-zA-Z]{2,3})*$";
 		System.out.println("Enter your Email  Id");
 		String email=input.next();
 		if(email.matches(pattern))
