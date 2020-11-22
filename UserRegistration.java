@@ -34,11 +34,14 @@ public class UserRegistration
 		Pattern pattern=Pattern.compile(password);
 		return pattern.matcher(Password).matches();
 	}
-	public void checkName() {
-		while(true) {
+	public void checkName() 
+	{
+		while(true) 
+		{
 			String name=Entry();
 			boolean check=nameValidation(name);
-			if(check) {
+			if(check)
+			{
 				System.out.println("valid");
 				break;
 			}
@@ -46,11 +49,14 @@ public class UserRegistration
 				System.out.print("Invalid\nPlease Enter your valid name: ");
 		}
 	}
-	public void checkEmail() {
-		while(true) {
+	public void checkEmail()
+	{
+		while(true)
+		{
 			String email=Entry();
 			boolean check=emailValidation(email);
-			if(check) {
+			if(check) 
+			{
 				System.out.println("valid");
 				break;
 			}
@@ -58,11 +64,14 @@ public class UserRegistration
 				System.out.print("Invalid\nPlease Enter your valid email id: ");
 		}
 	}
-	public void checkMobileNumber() {
-		while(true) {
+	public void checkMobileNumber() 
+	{
+		while(true)
+		{
 			String mobile=Entry();
 			boolean check=mobileNumValidation(mobile);
-			if(check) {
+			if(check)
+			{
 				System.out.println("valid");
 				break;
 			}
@@ -70,11 +79,14 @@ public class UserRegistration
 				System.out.print("Invalid\nPlease Enter your valid mobile number: ");
 		}
 	}
-	private void checkPassword() {
-		while(true) {
+	private void checkPassword() 
+	{
+		while(true)
+		{
 			String password=Entry();
 			boolean check=passwordValidation(password);
-			if(check) {
+			if(check)
+			{
 				System.out.println("valid");
 				break;
 			}
@@ -96,5 +108,4 @@ public class UserRegistration
 		System.out.print("Enter the Password: ");
 		userregistration.checkPassword();
 	}
-	
 }
