@@ -42,6 +42,10 @@ public class ParameterizedTestUserRegistartion
 	@Test
 	public void paramerizedtestuserregistion()
 	{
-		assertEquals(expectedresult,userregistration.emailValidation(email));
+		try {
+			assertEquals(expectedresult,userregistration.emailValidation(email));
+		} catch (UserRegistrationException e) {
+			System.out.println(e);
+		}
 	}
 }

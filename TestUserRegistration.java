@@ -1,79 +1,131 @@
 package day5;
+
 import org.junit.Assert;
 import org.junit.Test;
-public class TestUserRegistration 
-{
-	UserRegistration userregistration= new UserRegistration();
+
+public class TestUserRegistration {
+	UserRegistration userregistration = new UserRegistration();
+
 	@Test
-	public void givenFirstName_WhenProper_ShouldReturnTrue() 
-	{
-		boolean result = userregistration.nameValidation("Sai");
-		Assert.assertEquals(true, result);
+	public void givenFirstName_WhenProper_ShouldReturnTrue() {
+		try {
+			Assert.assertTrue(userregistration.nameValidation("Sai"));
+		} catch (UserRegistrationException e) {
+		}
 	}
+
 	@Test
-	public void givenFirstName_WhenShort_ShouldReturnFalse()
-	{
-		boolean result = userregistration.nameValidation("Sa");
-		Assert.assertEquals(false, result);
+	public void givenFirstName_WhenShort_ShouldReturnFalse() {
+		try {
+			userregistration.nameValidation("Sa");
+		} catch (UserRegistrationException e) {
+			Assert.assertEquals("Please enter valid name", e.getMessage());
+		}
 	}
+
 	@Test
-	public void givenFirstName_WhenWithSpChars_ShouldReturnFalse()
-	{
-		boolean result = userregistration.nameValidation("S@iPr@k@sh");
-		Assert.assertEquals(false, result);
+	public void givenFirstName_WhenWithSpChars_ShouldReturnFalse() {
+		try {
+			userregistration.nameValidation("S@iPr@k@sh ");
+		} catch (UserRegistrationException e) {
+			Assert.assertEquals("Please enter valid name", e.getMessage());
+		}
 	}
+
 	@Test
-	public void givenLastName_WhenProper_ShouldReturnTrue() 
-	{
-		boolean result = userregistration.nameValidation("Prakash");
-		Assert.assertEquals(true, result);
+	public void givenLastName_WhenProper_ShouldReturnTrue() {
+		try {
+			Assert.assertTrue(userregistration.nameValidation("Prakash"));
+		} catch (UserRegistrationException e) {
+		}
 	}
+
 	@Test
-	public void givenLastName_WhenShort_ShouldReturnFalse() 
-	{
-		boolean result = userregistration.nameValidation("Sa");
-		Assert.assertEquals(false, result);
+	public void givenLastName_WhenShort_ShouldReturnFalse() {
+		try {
+			userregistration.nameValidation("Sa");
+		} catch (UserRegistrationException e) {
+			Assert.assertEquals("Please enter valid name", e.getMessage());
+		}
 	}
+
 	@Test
-	public void givenLastName_WhenWithSpChars_ShouldReturnFalse() 
-	{
-		boolean result = userregistration.nameValidation("Pr@k@sh");
-		Assert.assertEquals(false, result);
+	public void givenLastName_WhenWithSpChars_ShouldReturnFalse() {
+		try {
+			userregistration.nameValidation("S@iPr@k@sh ");
+		} catch (UserRegistrationException e) {
+			Assert.assertEquals("Please enter valid name", e.getMessage());
+		}
 	}
+
 	@Test
-	public void validateEmailAddress_WhenValid_ShouldReturnTrue()
-	{
-		boolean result = userregistration.emailValidation("abc.xyz@bl.co.in");
-		Assert.assertEquals(true, result);
+	public void validateEmailAddress_WhenValid_ShouldReturnTrue() {
+		try {
+			userregistration.emailValidation("abc.xyz@bl.co.in");
+		} catch (UserRegistrationException e) {
+		}
 	}
+	
 	@Test
-	public void validateMobile_Whenwithcountrycode_Space_Num_ShouldReturnTrue()
-	{
-		boolean result =userregistration.mobileNumValidation("91 9638527410");
-		Assert.assertEquals(true, result);
+	public void validateEmailAddress_WhennotValid_ShouldReturnFalse() {
+		try {
+			userregistration.emailValidation("abcYahoo.com");
+		} catch (UserRegistrationException e) {
+			Assert.assertEquals("Please enter valid email id", e.getMessage());
+		}
 	}
+
 	@Test
-	public void validatePassword_withmin8char_withallconditions_ShouldReturnTrue()
-	{
-		boolean result =userregistration.passwordValidation("Svjjhj24@ufv");
-		Assert.assertEquals(true, result);
+	public void validateMobile_Whenwithcountrycode_Space_Num_ShouldReturnTrue() {
+		try {
+			userregistration.mobileNumValidation("91 9638527410");
+		} catch (UserRegistrationException e) {
+		}
 	}
+	
 	@Test
-	public void validatePassword_withoutmin8char_ShouldReturnFalse() 
-	{
-		boolean result =userregistration.passwordValidation("s1@as");
-		Assert.assertEquals(false, result);
+	public void validateMobile_Numberlessthan10_ShouldReturnFalse() {
+		try {
+			userregistration.mobileNumValidation("963852741");
+		} catch (UserRegistrationException e) {
+			Assert.assertEquals("Please enter valid mobile number", e.getMessage());
+		}
 	}
+
 	@Test
-	public void validatePassword_withoutUppercase_ShouldReturnFalse()
-	{
-		boolean result =userregistration.passwordValidation("sai@12345");
-		Assert.assertEquals(false, result);
+	public void validatePassword_withmin8char_withallconditions_ShouldReturnTrue() {
+		try {
+			userregistration.passwordValidation("Svjjhj24@ufv");
+		} catch (UserRegistrationException e) {
+			e.printStackTrace();
+		}
 	}
+
 	@Test
-	public void validatePassword_withoutNumeric_ShouldReturnFalse()
-	{
-		boolean result =userregistration.passwordValidation("sai@prakash");
-		Assert.assertEquals(false, result);
+	public void validatePassword_withoutmin8char_ShouldReturnFalse() {
+		try {
+			userregistration.passwordValidation("s1@as");
+		} catch (UserRegistrationException e) {
+			Assert.assertEquals("Please enter valid password", e.getMessage());
+		}
+
+	}
+
+	@Test
+	public void validatePassword_withoutUppercase_ShouldReturnFalse() {
+		try {
+			userregistration.passwordValidation("sai@12345");
+		} catch (UserRegistrationException e) {
+			Assert.assertEquals("Please enter valid password", e.getMessage());
+		}
+	}
+
+	@Test
+	public void validatePassword_withoutNumeric_ShouldReturnFalse() {
+		try {
+			userregistration.passwordValidation("sai@prakash");
+		} catch (UserRegistrationException e) {
+			Assert.assertEquals("Please enter valid password", e.getMessage());
+		}
 	}
 }
