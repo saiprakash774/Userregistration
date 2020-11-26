@@ -1,6 +1,7 @@
 package day5;
 
 import java.util.Scanner;
+import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
 public class UserRegistration {
@@ -12,36 +13,32 @@ public class UserRegistration {
 	}
 
 	public boolean nameValidation(String Name) throws UserRegistrationException {
-		String nameexpression = "^[A-Z][a-z]{2,}$";
-		Pattern pattern = Pattern.compile(nameexpression);
-		if(pattern.matcher(Name).matches())
+		Predicate<String> name = n ->  n.matches( "^[A-Z][a-z]{2,}$");
+		if(name.test(Name))
 			return true;
 		else
 			throw new UserRegistrationException("Please enter valid name");
 	}
 
 	public boolean emailValidation(String Email) throws UserRegistrationException {
-		String email = "^[a-zA-Z]+([\\d\\.\\+\\-][0-9a-zA-z]+)*@[\\da-zA-Z]+.[a-zA-Z]{2,4}(.[a-zA-Z]{2,3})*$";
-		Pattern pattern = Pattern.compile(email);
-		if(pattern.matcher(Email).matches())
+		Predicate<String> email = n ->  n.matches("^[a-zA-Z]+([\\d\\.\\+\\-][0-9a-zA-z]+)*@[\\da-zA-Z]+.[a-zA-Z]{2,4}(.[a-zA-Z]{2,3})*$");
+		if(email.test(Email))
 			return true;
 		else
 			throw new UserRegistrationException("Please enter valid email id");
 	}
 
 	public boolean mobileNumValidation(String Mobile) throws UserRegistrationException {
-		String mobile = "^(\\d{2}( )?)?[6-9]{1}\\d{9}$";
-		Pattern pattern = Pattern.compile(mobile);
-		if(pattern.matcher(Mobile).matches())
+		Predicate<String> mobile = n ->  n.matches ("^(\\d{2}( )?)?[6-9]{1}\\d{9}$");
+		if(mobile.test(Mobile))
 			return true;
 		else
 			throw new UserRegistrationException("Please enter valid mobile number");
 	}
 
 	public boolean passwordValidation(String Password) throws UserRegistrationException {
-		String password = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?!(?:.*[!@#$%^&*]){2})[a-zA-Z0-9!@#$%^&*]{8,}$";
-		Pattern pattern = Pattern.compile(password);
-			if(pattern.matcher(Password).matches())
+		Predicate<String> password = n ->  n.matches ("^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?!(?:.*[!@#$%^&*]){2})[a-zA-Z0-9!@#$%^&*]{8,}$");
+			if(password.test(Password))
 				return true;
 			else
 				throw new UserRegistrationException("Please enter valid password");
